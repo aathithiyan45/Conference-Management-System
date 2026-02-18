@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Speaker Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="loadSpeakerPage()">
+
+<h2>Speaker Dashboard</h2>
+
+<h3>Submit Paper</h3>
+
+<input type="text" id="paperTitle" placeholder="Paper Title"><br><br>
+
+<label>Select Conference:</label><br>
+<select id="conferenceSelect">
+    <option value="">Loading conferences...</option>
+</select><br><br>
+
+<button onclick="submitPaper()">Submit Paper</button>
+
+<br><br>
+<button onclick="logout()">Logout</button>
+
+<script src="script.js"></script>
+</body>
+</html>

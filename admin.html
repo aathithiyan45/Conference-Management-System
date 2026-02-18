@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="loadAdminData()">
+
+<h2>Admin Dashboard</h2>
+
+<h3>Create Conference</h3>
+<input type="text" id="title" placeholder="Conference Title"><br>
+<input type="date" id="date"><br>
+<input type="text" id="venue" placeholder="Venue"><br>
+<button onclick="createConference()">Create</button>
+
+<hr>
+
+<h3>Existing Conferences</h3>
+<div id="conferenceList"></div>
+
+<hr>
+
+<h3>Submitted Papers</h3>
+<div id="paperList"></div>
+
+<br>
+<button onclick="logout()">Logout</button>
+
+<script src="script.js"></script>
+</body>
+</html>
