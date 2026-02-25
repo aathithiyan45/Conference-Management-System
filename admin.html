@@ -1,31 +1,84 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Admin Dashboard</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard — ConferenceHub</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body onload="loadAdminData()">
 
-<h2>Admin Dashboard</h2>
+<div class="dash-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-logo">CONFERENCEHUB</div>
+        <div class="sidebar-section">Admin Panel</div>
+        <a class="active"><span class="sidebar-icon"></span> Dashboard</a>
+        <a onclick="document.getElementById('createSection').scrollIntoView({behavior:'smooth'})">
+            <span class="sidebar-icon">+</span> New Conference
+        </a>
+        <a onclick="document.getElementById('confSection').scrollIntoView({behavior:'smooth'})">
+            <span class="sidebar-icon"></span> Conferences
+        </a>
+        <a onclick="document.getElementById('paperSection').scrollIntoView({behavior:'smooth'})">
+            <span class="sidebar-icon"></span> Papers
+        </a>
+        <div class="sidebar-bottom">
+            <button class="btn-ghost" onclick="logout()" style="width:100%;justify-content:center;">
+                Logout
+            </button>
+        </div>
+    </aside>
 
-<h3>Create Conference</h3>
-<input type="text" id="title" placeholder="Conference Title"><br>
-<input type="date" id="date"><br>
-<input type="text" id="venue" placeholder="Venue"><br>
-<button onclick="createConference()">Create</button>
+    <!-- Main -->
+    <main class="main-content">
+        <div class="page-header">
+            <h2>Admin Dashboard</h2>
+            <p>Manage conferences, review paper submissions, and monitor activity.</p>
+        </div>
 
-<hr>
+        <!-- Stats -->
+        <div id="stats"></div>
 
-<h3>Existing Conferences</h3>
-<div id="conferenceList"></div>
+        <!-- Create Conference -->
+        <div class="panel" id="createSection">
+            <div class="panel-title">+ Create New Conference</div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Conference Title</label>
+                    <input type="text" id="title" placeholder="e.g. AI Summit 2025">
+                </div>
+                <div class="form-group">
+                    <label>Date</label>
+                    <input type="date" id="date">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Venue</label>
+                    <input type="text" id="venue" placeholder="e.g. Grand Hall, Mumbai">
+                </div>
+                <div class="form-group">
+                    <label>Capacity (seats)</label>
+                    <input type="number" id="capacity" placeholder="e.g. 200" min="1">
+                </div>
+            </div>
+            <button onclick="createConference()">Create Conference</button>
+        </div>
 
-<hr>
+        <!-- Conferences List -->
+        <div class="panel" id="confSection">
+            <div class="panel-title"> Existing Conferences</div>
+            <div id="conferenceList"></div>
+        </div>
 
-<h3>Submitted Papers</h3>
-<div id="paperList"></div>
-
-<br>
-<button onclick="logout()">Logout</button>
+        <!-- Papers List -->
+        <div class="panel" id="paperSection">
+            <div class="panel-title"> Submitted Papers</div>
+            <div id="paperList"></div>
+        </div>
+    </main>
+</div>
 
 <script src="script.js"></script>
 </body>

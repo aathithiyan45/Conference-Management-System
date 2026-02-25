@@ -1,26 +1,60 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Speaker Dashboard</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speaker Dashboard — ConferenceHub</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body onload="loadSpeakerPage()">
 
-<h2>Speaker Dashboard</h2>
+<div class="dash-layout">
+    <aside class="sidebar">
+        <div class="sidebar-logo">CONFERENCEHUB</div>
+        <div class="sidebar-section">Speaker Panel</div>
+        <a class="active"><span class="sidebar-icon"></span> My Dashboard</a>
+        <a onclick="document.getElementById('submitSection').scrollIntoView({behavior:'smooth'})">
+            <span class="sidebar-icon">📝</span> Submit Paper
+        </a>
+        <a onclick="document.getElementById('papersSection').scrollIntoView({behavior:'smooth'})">
+            <span class="sidebar-icon"></span> My Papers
+        </a>
+        <div class="sidebar-bottom">
+            <button class="btn-ghost" onclick="logout()" style="width:100%;justify-content:center;">
+                Logout
+            </button>
+        </div>
+    </aside>
 
-<h3>Submit Paper</h3>
+    <main class="main-content">
+        <div class="page-header">
+            <h2>Speaker Dashboard</h2>
+            <p>Submit your research papers and track their review status.</p>
+        </div>
 
-<input type="text" id="paperTitle" placeholder="Paper Title"><br><br>
+        <!-- Submit Paper -->
+        <div class="panel" id="submitSection">
+            <div class="panel-title">Submit a Paper</div>
+            <div class="form-group">
+                <label>Paper Title</label>
+                <input type="text" id="paperTitle" placeholder="e.g. Deep Learning in Healthcare">
+            </div>
+            <div class="form-group">
+                <label>Select Conference</label>
+                <select id="conferenceSelect">
+                    <option value="">Loading conferences...</option>
+                </select>
+            </div>
+            <button onclick="submitPaper()">Submit Paper →</button>
+        </div>
 
-<label>Select Conference:</label><br>
-<select id="conferenceSelect">
-    <option value="">Loading conferences...</option>
-</select><br><br>
-
-<button onclick="submitPaper()">Submit Paper</button>
-
-<br><br>
-<button onclick="logout()">Logout</button>
+        <!-- My Papers -->
+        <div class="panel" id="papersSection">
+            <div class="panel-title"> My Submitted Papers</div>
+            <div id="myPapers"></div>
+        </div>
+    </main>
+</div>
 
 <script src="script.js"></script>
 </body>

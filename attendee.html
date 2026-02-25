@@ -1,23 +1,50 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Attendee Dashboard</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendee Dashboard — ConferenceHub</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body onload="loadAttendeePage()">
 
-<h2>Attendee Dashboard</h2>
+<div class="dash-layout">
+    <aside class="sidebar">
+        <div class="sidebar-logo">CONFERENCEHUB</div>
+        <div class="sidebar-section">Attendee Panel</div>
+        <a class="active"><span class="sidebar-icon"></span> Dashboard</a>
+        <a onclick="document.getElementById('availSection').scrollIntoView({behavior:'smooth'})">
+            <span class="sidebar-icon"></span> Conferences
+        </a>
+        <a onclick="document.getElementById('myRegSection').scrollIntoView({behavior:'smooth'})">
+            <span class="sidebar-icon"></span> My Registrations
+        </a>
+        <div class="sidebar-bottom">
+            <button class="btn-ghost" onclick="logout()" style="width:100%;justify-content:center;">
+                Logout
+            </button>
+        </div>
+    </aside>
 
-<h3>Available Conferences</h3>
-<div id="conferenceList"></div>
+    <main class="main-content">
+        <div class="page-header">
+            <h2>Attendee Dashboard</h2>
+            <p>Browse available conferences and manage your registrations.</p>
+        </div>
 
-<hr>
+        <!-- Available Conferences -->
+        <div class="panel" id="availSection">
+            <div class="panel-title"> Available Conferences</div>
+            <div id="conferenceList"></div>
+        </div>
 
-<h3>My Registrations</h3>
-<div id="myRegistrations"></div>
-
-<br>
-<button onclick="logout()">Logout</button>
+        <!-- My Registrations -->
+        <div class="panel" id="myRegSection">
+            <div class="panel-title"> My Registrations</div>
+            <div id="myRegistrations"></div>
+        </div>
+    </main>
+</div>
 
 <script src="script.js"></script>
 </body>
